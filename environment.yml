@@ -1,0 +1,21 @@
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.6
+  - pip
+  - numpy
+  - pandas
+  - pyarrow
+  - mypy
+  - tqdm
+  - jupyterlab
+  - nb_conda
+  - nb_conda_kernels
+  - widgetsnbextension
+  - jupyter_contrib_nbextensions
+  - jupyter_nbextensions_configurator
+  - ipywidgets
+  - pip:
+    - widgetsnbextension==3.5.1
+    - thinc[blis,tensorflow]==8.0.0a1
