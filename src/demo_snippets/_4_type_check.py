@@ -6,16 +6,16 @@ from thinc.model import Model
 # Define Custom X/Y types
 MyModelX = List[List[float]]
 MyModelY = List[List[float]]
-model: Model[MyModelX, MyModelY] = chain(
-    Relu(12), Relu(12, dropout=0.2), Softmax(),
-)
+model: Model[MyModelX, MyModelY] = chain(Relu(12), Relu(12, dropout=0.2), Softmax(), )
+
 # ERROR: incompatible type "bool", expected "List[List[float]]"
 model(False)
+
 # ERROR: List item 0 has incompatible type "str"; expected "float"
 model.begin_update([["0"]])
+
 # ERROR: incompatible type "bool", expected "List[List[float]]"
 model.predict(True)
-
 
 # This example should be run with mypy. This is an example of type-level checking
 # for network validity.
@@ -26,7 +26,9 @@ model.predict(True)
 # line up.
 #
 # You should see the error an error,
-# examples/howto/type_chain.py:10: error: Cannot infer type argument 2 of "chain"
+# _4_type_check.py:32: error: Cannot infer type argument 2 of "chain"
+# _4_type_check.py:32: error: Layer outputs type (thinc.types.Floats2d) but the next layer expects (thinc.types.Ragged) as an input
+# _4_type_check.py:32: error: Layer input type (thinc.types.Ragged) is not compatible with output (thinc.types.Floats2d) from previous layer
 bad_model = chain(Relu(10), reduce_max(), Softmax())
 
 concate_model = concatenate(Relu(10), reduce_max(), Relu(10), Relu(10)), reduce_max()
