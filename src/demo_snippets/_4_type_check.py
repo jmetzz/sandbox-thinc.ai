@@ -31,9 +31,9 @@ model.predict(True)
 # _4_type_check.py:32: error: Layer input type (thinc.types.Ragged) is not compatible with output (thinc.types.Floats2d) from previous layer
 bad_model = chain(Relu(10), reduce_max(), Softmax())
 
-concate_model = concatenate(Relu(10), reduce_max(), Relu(10), Relu(10)), reduce_max()
+concatenate_model = concatenate(Relu(10), reduce_max(), Relu(10), Relu(10)), reduce_max()
 
-concate_chain_model = chain(
+concatenate_chain_model = chain(
     concatenate(Relu(10), reduce_max(), Relu(10), Relu(10)), reduce_max()
 )
 
